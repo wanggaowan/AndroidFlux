@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wgw.flux.Action;
+
 
 public class MainActivity extends AppCompatActivity {
     
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    
+        Action.INIT_POOL_SIZE = 30;
+        
         
         mTextView = findViewById(R.id.textView);
         
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         mMainStore = new MainStore();
         mMainStore.register(ActionType.CHANGE_TEXT);
         mMainStore.text.observe(this, s -> mTextView.setText(s));
+    
+       
     }
     
     public void changeText(View view) {

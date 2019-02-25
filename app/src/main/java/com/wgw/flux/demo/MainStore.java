@@ -16,5 +16,6 @@ public class MainStore extends Store {
     @Override
     protected void onAction(Action action) {
         text.setValue((String) action.getData());
+        Action.recycleInstance(action);
     }
 }
